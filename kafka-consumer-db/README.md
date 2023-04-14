@@ -1,28 +1,30 @@
-Start Zookeeper Server:
+## LOCAL SETUP:
+
+## Start Zookeeper Server:
 
     ```
         bin/zookeeper-server-start.sh config/zookeeper.properties
     ```
 
-Start Kafka Server:
+## Start Kafka Server:
 
     ```
         bin/kafka-server-start.sh config/server.properties
     ```
 
-Kafka Console Producer:
+## Kafka Console Producer:
 
     ```
         bin/kafka-console-producer.sh --topic incident_change --bootstrap-server localhost:9092
     ```
 
-Maven Install:
+## Maven Install:
 
     ```
         mvn clean install
     ```
 
-SpringBoot Run:
+## SpringBoot Run:
 
     ```
         mvn springboot:run
