@@ -28,7 +28,8 @@ SpringBoot Run:
         mvn springboot:run
     ```
 
-## example published incident event
+## published incident event examples:
 
     {"title": "new incident1", "description": "Incident 1 description", "address": "address", "phone" : "12345"}
     {"title": "new incident2", "description": "Incident 2 description", "address": "address2", "phone" : "67890"}
+    {"title": "new incident3", "description": "Incident 3 description", "address": "address3", "phone" : "67890333"}

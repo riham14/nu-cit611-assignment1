@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.software.architecture.model.IncidentEvent;
 import com.software.architecture.model.Incident;
 import com.software.architecture.repo.IncidentRepository;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.JSONObject;
 
 @Component
 @Service
@@ -27,29 +25,17 @@ public final class KafkaConsumerService {
 
   @KafkaListener(
     topics = "incident_change", 
-    groupId = "myGroup"
-    // containerFactory = "concurrentKafkaListenerContainerFactory"
+    groupId = "myGroup",
+    containerFactory = "concurrentKafkaListenerContainerFactory"
   )
-  public void consume(String incidentEvent) {
-    LOGGER.info(String.format("Incident received -> %s", incidentEvent));
-
+  public void consume(IncidentEvent incidentEvent) {
+    
     try{
-      JSONParser parser = new JSONParser();
-      JSONObject jsonObject = (JSONObject) parser.parse(incidentEvent);
-
-      String title = (String) jsonObject.get("title");
-      String description = (String) jsonObject.get("description");
-      String address = (String) jsonObject.get("address");
-      String phone = (String) jsonObject.get("phone");
-
-  
-      LOGGER.info(String.format("Incident json -> {}"), jsonObject);
-      LOGGER.info(String.format("Incident title -> %s", title));
-  
-  
-  
+      
+      LOGGER.info(String.format("Incident Event -> {}"), incidentEvent);
+    
       // save new incident
-      Incident incident = new Incident(title, description, address, phone);  
+      Incident incident = new Incident(incidentEvent.title, incidentEvent.description, incidentEvent.address, incidentEvent.phone);  
       incidentRepository.save(incident);
   
       // log all saved incidents
