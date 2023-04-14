@@ -1,9 +1,7 @@
 package com.software.architecture.model;
 
 import org.springframework.data.annotation.Id;
-// import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.util.Date;
 
 @Document(collection = "incidents")
 public class Incident
@@ -14,21 +12,17 @@ public class Incident
 	public String title;
 	public String description;
 	public String address;
-	public int phone;
-
-	// @DateTimeFormat(pattern = "dd-MM-yyyy")
-	// public Date timestamp;
+	public String phone;
 
   public Incident() {
 
   }
 
-	public Incident(String title, String description, String address, int phone) {
+	public Incident(String title, String description, String address, String phone) {
 		this.title = title;
 		this.description = description;
 		this.address = address;
 		this.phone = phone;
-		// this.timestamp = new Date();
 	}
 
 	public String getId() {
@@ -63,27 +57,22 @@ public class Incident
 		this.address = address;
 	}
 
-	// public Date getTimestamp() {
-	// 	return this.timestamp;
-	// }
-
-	// public void setTimestamp(Date timestamp) {
-	// 	this.timestamp = timestamp;
-	// }
-
-	public int getPhone() {
+	public String getPhone() {
 		return this.phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
 	@Override
   public String toString() {
-    return "Incident { " +
-			"id=" + id + ", title=" + title + ", description=" + description + ", address=" + address + ", phone=" + phone 
-			// +	", timestamp=" + timestamp 
-			+ "}";
+    return "Incident { " 
+		+	"id=" + id 
+		+ ", title=" + title 
+		+ ", description=" + description 
+		+ ", address=" + address 
+		+ ", phone=" + phone 
+		+ "}";
   }
 }
