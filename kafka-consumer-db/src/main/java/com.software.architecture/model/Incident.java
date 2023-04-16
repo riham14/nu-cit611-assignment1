@@ -13,12 +13,21 @@ public class Incident
 	public String description;
 	public String address;
 	public String phone;
+	public String createdDate;
 
-  public Incident() {
+	public Incident() {
 
-  }
+	}
 
-	public Incident(String title, String description, String address, String phone) {
+	public Incident(String title, String description, String address, String phone, String createdDate) {
+		this.title = title;
+		this.description = description;
+		this.address = address;
+		this.phone = phone;
+	}
+
+	public Incident(String id, String title, String description, String address, String phone, String createdDate) {
+		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.address = address;
@@ -65,14 +74,23 @@ public class Incident
 		this.phone = phone;
 	}
 
+
+	public String getCreatedDate() {
+		return this.createdDate;
+	}
+
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
+	}
+
 	@Override
-  public String toString() {
-    return "Incident { " 
-		+	"id=" + id 
-		+ ", title=" + title 
-		+ ", description=" + description 
-		+ ", address=" + address 
-		+ ", phone=" + phone 
-		+ "}";
-  }
+  	public String toString() {
+		return "Incident { " 
+			+ "id=" + id 
+			+ ", title=" + title 
+			+ ", description=" + description 
+			+ ", address=" + address 
+			+ ", phone=" + phone 
+			+ "}";
+	}
 }
