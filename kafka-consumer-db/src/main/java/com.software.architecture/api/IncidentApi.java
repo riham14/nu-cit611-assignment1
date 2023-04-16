@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @RestController
-@RequestMapping("/incidents")
+@RequestMapping("/incident")
 public class IncidentApi {
 
     private IncidentRepository repository;
@@ -22,6 +22,4 @@ public class IncidentApi {
     public List<Incident> getAll() {
         return repository.findAll();
     }
-
-    
 }

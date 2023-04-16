@@ -17,9 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Component
 @Service
 public final class KafkaConsumerService {
-
-  int number;
-
+  
   private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumerService.class);
 
   @Autowired
@@ -30,9 +28,12 @@ public final class KafkaConsumerService {
   }
 
   @KafkaListener(
-    topics = {"create-incident", "update-incident"}, 
+    topics = { 
+      "${spring.kafka.topic.create.name}",  
+      "${spring.kafka.topic.update.name}", 
+      "${spring.kafka.topic.delete.name}" 
+    },
     groupId = "myGroup"
-    // containerFactory = "concurrentKafkaListenerContainerFactory"
   )
   public void consume(String incidentEvent, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
 
