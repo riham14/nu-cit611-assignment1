@@ -27,7 +27,7 @@
 ## SpringBoot Run:
 
     ```
-        mvn springboot:run
+        mvn spring-boot:run
     ```
 
 ## published incident event examples:
