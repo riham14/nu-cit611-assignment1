@@ -1,0 +1,8 @@
+---
+applications:
+  - name: incident-consumer
+    memory: 1G
+    random-route: true
+    path: target/kafka-consumer-db-module-1.0-SNAPSHOT.jar
+
+
